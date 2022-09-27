@@ -8,7 +8,7 @@ public class GamblingGame {
     public static final int bet = 1; // and bet only $1
     static int newStake ;
 
-    public static void winLoose(int r, int bet){
+    public static void winLoose(int r, int bet){// UC2 to check randomly if the Gambler wins or loose the bet
         if (r==bet){
             System.out.println("Gambler Wins!");
 
