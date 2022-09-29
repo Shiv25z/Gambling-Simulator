@@ -53,7 +53,7 @@ public class GamblingGame {
         }
     }
         void monthGame() {
-            for(int day=1; day < 20;day++) {
+            for(int day=0; day < 20;day++) {
                 System.out.println("Day " +(day+1)+ " Game starts!");// Beginning of the game
                 winLoose(day);
                 System.out.println("Game Ends for today!");// End of the game
@@ -61,7 +61,13 @@ public class GamblingGame {
             }
             }
 
+        void showWinLossCount(){
 
+        for(int i=0;i<20;i++){
+            System.out.println("Day: "+(i+1)+ " Total Win count: "+(winCountArr[i]+1));
+            System.out.println("Day: "+(i+1)+ " Total Loose count: "+(looseCountArr[i]+1));
+        }
+        }
 
 
 
@@ -71,6 +77,7 @@ public class GamblingGame {
         GamblingGame gb = new GamblingGame();
 
         gb.monthGame();
+        gb.showWinLossCount();
 
         }
 
