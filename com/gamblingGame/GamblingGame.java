@@ -15,7 +15,7 @@ public class GamblingGame {
         int winCount = 0;
         int looseCount = 0;
         Random random= new Random();
-        //Simulating the Game Until Win or Loose nit Reach 50% of Day Stack
+        
         while(true) {
             int gameStatus = random.nextInt(2) ;
             if (gameStatus == bet) {
