@@ -6,47 +6,75 @@ public class GamblingGame {
 
     public static final int stake = 100; // UC1 to start the stake with $100
     public static final int bet = 1; // and bet only $1
-    static int newStake = stake ;
+    int newStake=stake;
 
-    public static void winLoose(int bet) {// UC2 to check randomly if the Gambler wins or loose the bet
 
-        while (newStake > 50 && newStake < 150) {// UC3 to check for calculation if 50% win or loose
-            int r = (int)Math.floor(Math.random()*10)%2;
-
-            if (r == bet) {
-                System.out.println("Gambler Wins!");
-                newStake++;
-                System.out.println("New Amount Inhand: "+newStake);
-                if (newStake == 150){
-                    System.out.println("Gambler resigns as he wins 50% more of his stake");//UC3
-                }
-                else {
-                    continue;
-                }
-
+    void winLoose() {// UC2 to check randomly if the Gambler wins or loose the bet
+        int winStack = 0;
+        int looseStack = 0;
+        int winCount = 0;
+        int looseCount = 0;
+        Random random= new Random();
+        //Simulating the Game Until Win or Loose nit Reach 50% of Day Stack
+        while(true) {
+            int gameStatus = random.nextInt(2) ;
+            if (gameStatus == bet) {
+                winCount++;
+                winStack += bet;
+                System.out.println("Gambler Won the GAME !!! Win stack : " + winStack);
+            } else {
+                looseCount++;
+                looseStack += bet;
+                System.out.println("Gambler Lost the Game! Loose stack :" + looseStack);
             }
-            else {
-                System.out.println("Gambler Loose!");
-                newStake--;
-                System.out.println("New Amount Inhand: "+newStake);
-                if (newStake == 50){ // UC3
-                    System.out.println("Gambler resigns as he looses 50%  of his stake");
-                }
-                else {
-                    continue;
-                }
+
+            if(winStack == stake / 2) {
+
+                System.out.println("Win Stack is 50% of his Stake. So, Gambler Resigning for the DAY.");
+                break;
+            }
+
+            if(looseStack == stake/ 2) {
+
+                System.out.println("Gambler Lost his 50% stake so gambler resigns for the day!");
+                break;
+            }
+        }
+    }
+        void monthGame() {
+            int day=0;
+            while (day != 20) {
+                day++;
+                System.out.println("Day "+day+ " Game starts!");// Beginning of the game
+                winLoose();
+                System.out.println();
+                System.out.println("Game Ends for today!");// End of the game
 
 
+                if (newStake == 150) {
+
+                    System.out.println("Gambler resigns for the day " + day + " as he wins 50% more of his stake");//UC3
+                    System.out.println("Day: " + day + " Won: $50");// UC4 shows win of the day
+                    System.out.println();
+                } else {
+
+                    System.out.println("Gambler resigns for the day " + day + " as he looses 50%  of his stake");
+                    System.out.println("Day: " + day + " Lost: $50");// UC4 shows win of the day
+                    System.out.println();
                 }
 
             }
         }
 
+
+
+
     public static void main(String[] args) {
         System.out.println(" Welcome to Gambling Game Simulator! ");
-        winLoose(bet);
+        GamblingGame gb = new GamblingGame();
 
+        gb.monthGame();
+        }
 
 
     }
-}
