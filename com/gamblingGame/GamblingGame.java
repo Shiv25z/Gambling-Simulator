@@ -11,6 +11,10 @@ public class GamblingGame {
     static int[] winCountArr = new int[20];
     static int[] looseCountArr = new int[20];
     static String[] day = new String[20];
+    static int[] luckyDay = new int[20];
+    static int[] unluckyDay = new int[20];
+    static int luckyDayCount = 0;
+    static int unluckyDayCount = 0;
 
 
 
@@ -36,6 +40,8 @@ public class GamblingGame {
                 day[i]= "Won";
                 System.out.println("Gambler resigns for the day " + (i+1) + " as he wins 50% more of his stake");//UC3
                 System.out.println();
+                luckyDay[luckyDayCount]=i+1;
+                luckyDayCount++;
                 System.out.println("Day: " + (i+1) + " Won: "+winStack);// UC4 shows win of the day
                 System.out.println();
                 break;
@@ -44,6 +50,8 @@ public class GamblingGame {
                 day[i]= "Lost";
                 System.out.println("Gambler resigns for the day " + (i+1) + " as he looses 50%  of his stake");
                 System.out.println();
+                unluckyDay[unluckyDayCount]=i+1;
+                unluckyDayCount++;
                 System.out.println("Day: " + (i+1) + " Lost: "+looseStack);// UC4 shows win of the day
                 System.out.println();
                 break;
@@ -60,6 +68,21 @@ public class GamblingGame {
                 System.out.println();
             }
             }
+
+        void luckFactor(){
+            System.out.println();
+            System.out.print("Lucky Days: ");
+            for(int i=0; i<luckyDayCount;i++){
+                System.out.print(luckyDay[i]+ ", ");
+            }
+            System.out.println();
+            System.out.print("\nUnlucky Days: ");
+            for(int i=0; i<unluckyDayCount;i++){
+                System.out.print(unluckyDay[i]+", ");
+            }
+            System.out.println();
+
+        }
 
         void showWinLossCount(){
 
@@ -78,6 +101,7 @@ public class GamblingGame {
 
         gb.monthGame();
         gb.showWinLossCount();
+        gb.luckFactor();
 
         }
 
